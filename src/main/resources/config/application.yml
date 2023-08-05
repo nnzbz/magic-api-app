@@ -1,0 +1,51 @@
+server:
+  port: 9999
+spring:
+  jackson:
+    # json 序列化排除值为 null 的属性
+    default-property-inclusion: non_null
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  # 配置Redis
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+  # 数据库
+  datasource:
+    url: jdbc:mysql://localhost:3306/magic-api?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    username: magic
+    password: magic
+magic-api:
+  # 配置web页面入口
+  web: /magic/web
+  security:
+    # 登录用的用户名
+    username: admin
+    # 登录用的密码
+    password: e10adc3949ba59abbe56e057f20f883e  # 123456的hash
+  resource:
+    # 配置文件存储位置。当以classpath开头时，为只读模式
+    # mac用户请改为可读写的目录
+    # 如果不想存到文件中，可以参考配置将接口信息存到数据库、Redis中（或自定义）
+    location: magic-api/data
+
+############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
+sa-token:
+  # token 名称（同时也是 cookie 名称）
+  token-name: satoken
+  # token 有效期（单位：秒） 默认30天，-1 代表永久有效
+  timeout: 2592000
+  # token 最低活跃频率（单位：秒），如果 token 超过此时间没有访问系统就会被冻结，默认-1 代表不限制，永不冻结
+  active-timeout: -1
+  # 是否允许同一账号多地同时登录 （为 true 时允许一起登录, 为 false 时新登录挤掉旧登录）
+  is-concurrent: true
+  # 在多人登录同一账号时，是否共用一个 token （为 true 时所有登录共用一个 token, 为 false 时每次登录新建一个 token）
+  is-share: true
+  # token 风格（默认可取值：uuid、simple-uuid、random-32、random-64、random-128、tik）
+  token-style: uuid
+  # 是否输出操作日志
+  is-log: true
+
+api:
+  token: 12345678
