@@ -41,10 +41,27 @@
             <artifactId>magic-api-plugin-task</artifactId>
             <version>${magic-api.version}</version>
         </dependency>
+        <!-- SpringDoc插件 -->
+        <dependency>
+            <groupId>org.ssssssss</groupId>
+            <artifactId>magic-api-plugin-springdoc</artifactId>
+            <version>${magic-api.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>3.23.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.2.0</version>
         </dependency>
 
         <!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
