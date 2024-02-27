@@ -29,6 +29,10 @@ magic-api:
     # mac用户请改为可读写的目录
     # 如果不想存到文件中，可以参考配置将接口信息存到数据库、Redis中（或自定义）
     location: magic-api/data
+  backup: # 备份相关配置
+    enable: true #是否启用
+    max-history: -1 #备份保留天数，-1为永久保留
+    table-name: magic_backup_record_v2 #使用数据库存储备份时的表名
 
 api:
   token: 12345678
