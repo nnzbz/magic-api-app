@@ -1,6 +1,5 @@
 package magicapi.aop;
 
-import cn.dev33.satoken.stp.StpUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -27,10 +26,6 @@ public class ApiRequestInterceptor implements RequestInterceptor {
         }
         // 接口选项配置了不需要登录
         if ("false".equals(info.getOptionValue(Options.REQUIRE_LOGIN))) {
-            return null;
-        }
-        // 如果已登录，则不需要校验token
-        if (StpUtil.isLogin()) {
             return null;
         }
 
