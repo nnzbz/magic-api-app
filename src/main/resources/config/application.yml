@@ -11,6 +11,12 @@ spring:
     redis:
       host: 127.0.0.1
       port: 6379
+  autoconfigure:
+    exclude:
+      # 项目中禁用MongoDB(如果使用了MongoDB，请删除下面这行)
+      - org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+      - org.ssssssss.magicapi.mongo.MagicMongoConfiguration
+
   # 数据库
   datasource:
     url: jdbc:mysql://localhost:3306/magic-api?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
