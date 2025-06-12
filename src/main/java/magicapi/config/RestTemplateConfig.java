@@ -23,6 +23,9 @@ import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * http模块是基于RestTemplate封装而来，自定义RestTemplate，支持https
+ */
 @Configuration(proxyBeanMethods = false)
 public class RestTemplateConfig {
 
@@ -58,7 +61,7 @@ public class RestTemplateConfig {
     }
 
     /**
-     * magic-api的 http模块封装，加入自定义RestTemplate
+     * magic-api的http模块封装，加入自定义RestTemplate
      */
     @Bean
     public HttpModule magicHttpModule(RestTemplate restTemplate) {
