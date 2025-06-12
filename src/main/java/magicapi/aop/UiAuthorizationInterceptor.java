@@ -19,8 +19,8 @@ public class UiAuthorizationInterceptor implements AuthorizationInterceptor {
     private String validToken;
     private final Map<String, MagicUser> users = new HashMap<>();
 
-    public UiAuthorizationInterceptor(@Value("${magic-api.security.username}") String username,
-                                      @Value("${magic-api.security.password}") String password) {
+    public UiAuthorizationInterceptor(@Value("${magic-api.security.username:}") String username,
+                                      @Value("${magic-api.security.password:}") String password) {
         this.requireLogin = StringUtils.isNoneBlank(username, password);
         if (requireLogin) {
             this.validToken = MD5Utils.encrypt(String.format("%s||%s", username, password));

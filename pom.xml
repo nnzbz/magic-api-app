@@ -7,21 +7,21 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.12</version>
+        <version>3.3.12</version>
         <relativePath/>
     </parent>
 
     <groupId>magicapi</groupId>
     <artifactId>magic-api-app</artifactId>
-    <version>2.1.1</version>
+    <version>2.2.2</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <magic-api.version>2.1.1</magic-api.version>
-        <sa-token.version>1.35.0.RC</sa-token.version>
+        <magic-api.version>2.2.2</magic-api.version>
+        <sa-token.version>1.44.0</sa-token.version>
     </properties>
 
     <dependencies>
@@ -41,18 +41,26 @@
             <artifactId>magic-api-plugin-task</artifactId>
             <version>${magic-api.version}</version>
         </dependency>
-        <!-- SpringDoc插件 -->
-        <dependency>
-            <groupId>org.ssssssss</groupId>
-            <artifactId>magic-api-plugin-springdoc</artifactId>
-            <version>${magic-api.version}</version>
-        </dependency>
         <!-- Mongo插件 -->
         <dependency>
             <groupId>org.ssssssss</groupId>
             <artifactId>magic-api-plugin-mongo</artifactId>
             <version>${magic-api.version}</version>
         </dependency>
+
+
+        <!-- magic-api 依赖的版本有问题，更新为最新的版本 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.27.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.19.0</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -67,16 +75,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.redisson</groupId>-->
-<!--            <artifactId>redisson-spring-boot-starter</artifactId>-->
-<!--            <version>3.31.0</version>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>org.apache.httpcomponents.client5</groupId>
-            <artifactId>httpclient5</artifactId>
-            <version>5.3.1</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.redisson</groupId>-->
+        <!--            <artifactId>redisson-spring-boot-starter</artifactId>-->
+        <!--            <version>3.31.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.httpcomponents.client5</groupId>-->
+        <!--            <artifactId>httpclient5</artifactId>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -93,12 +100,6 @@
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.2.0</version>
-        </dependency>
-
         <!-- 数据库jdbc驱动 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -107,7 +108,7 @@
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>8.0.33</version>
+            <version>9.3.0</version>
         </dependency>
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
@@ -117,7 +118,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.6.0</version>
+            <version>42.7.6</version>
         </dependency>
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
