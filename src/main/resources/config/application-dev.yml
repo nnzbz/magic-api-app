@@ -1,8 +1,6 @@
 server:
   port: 9999
 spring:
-  profiles:
-    active: dev
   jackson:
     # json 序列化排除值为 null 的属性
     default-property-inclusion: non_null
@@ -25,12 +23,11 @@ spring:
     url: jdbc:mysql://mysql:3306/magic?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
     username: magic
     password: magic
-
 influxdb2:
-  url: http://influxdb2:8086
-  token: your_influxdb_token
-  org: your_org
-  bucket: your_bucket
+  url: http://192.168.1.70:8086
+  token: admin-token==
+  org: jk
+  bucket: jkscada
 
 magic-api:
   # 配置web页面入口

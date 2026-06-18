@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=magicapi.config.InfluxDbConfig
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=magicapi.config.RestTemplateConfig

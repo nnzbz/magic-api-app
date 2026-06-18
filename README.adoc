@@ -1,0 +1,28 @@
+= Magic-API
+
+== 初始化数据库结构
+
+. 参考: <https://github.com/ssssssss-team/magic-api/blob/master/db/README.md>
+
+. 建表语句
++
+[source,sql]
+----
+# 把原先文件存储到数据库的表
+CREATE TABLE `magic_api_file_v2` (
+  `file_path` varchar(512) NOT NULL,
+  `file_content` mediumtext,
+  PRIMARY KEY (`file_path`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+# 备份的表
+CREATE TABLE `magic_backup_record_v2` (
+  `id` varchar(32) NOT NULL COMMENT '原对象ID',
+  `create_date` bigint(13) NOT NULL COMMENT '备份时间',
+  `tag` varchar(32) DEFAULT NULL COMMENT '标签',
+  `type` varchar(32) DEFAULT NULL COMMENT '类型',
+  `name` varchar(64) DEFAULT NULL COMMENT '原名称',
+  `content` blob COMMENT '备份内容',
+  `create_by` varchar(64) DEFAULT NULL COMMENT '操作人',
+  PRIMARY KEY (`id`,`create_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+----

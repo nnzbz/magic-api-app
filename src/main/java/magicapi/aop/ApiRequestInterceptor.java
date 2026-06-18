@@ -15,6 +15,8 @@ import java.util.Enumeration;
 
 @Component
 public class ApiRequestInterceptor implements RequestInterceptor {
+    @Value("${api.token-header:Magic-Api-Token}")
+    private String apiTokenHeader;
     @Value("${api.token:}")
     private String apiToken;
 
@@ -30,7 +32,7 @@ public class ApiRequestInterceptor implements RequestInterceptor {
         }
 
         // 校验token
-        Enumeration<String> headers = request.getHeaders("Magic-Api-Token");
+        Enumeration<String> headers = request.getHeaders(apiTokenHeader);
         if (!headers.hasMoreElements()) {
             return new JsonBean<>(401, "用户未被授权");
         }
