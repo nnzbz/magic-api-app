@@ -1,11 +1,13 @@
 package magicapi.aop;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.ssssssss.magicapi.core.context.RequestEntity;
 import org.ssssssss.magicapi.core.interceptor.RequestInterceptor;
+import org.ssssssss.magicapi.core.interceptor.ResultProvider;
 import org.ssssssss.magicapi.core.model.ApiInfo;
-import org.ssssssss.magicapi.core.model.JsonBean;
 import org.ssssssss.magicapi.core.model.Options;
 import org.ssssssss.magicapi.core.servlet.MagicHttpServletRequest;
 import org.ssssssss.magicapi.core.servlet.MagicHttpServletResponse;
@@ -19,6 +21,8 @@ public class ApiRequestInterceptor implements RequestInterceptor {
     private String apiTokenHeader;
     @Value("${api.token:}")
     private String apiToken;
+    @Autowired
+    private ResultProvider resultProvider;
 
     @Override
     public Object preHandle(ApiInfo info, MagicScriptContext context, MagicHttpServletRequest request, MagicHttpServletResponse response) {
@@ -34,14 +38,29 @@ public class ApiRequestInterceptor implements RequestInterceptor {
         // 校验token
         Enumeration<String> headers = request.getHeaders(apiTokenHeader);
         if (!headers.hasMoreElements()) {
-            return new JsonBean<>(401, "用户未被授权");
+            RequestEntity requestEntity = RequestEntity.create();
+            requestEntity.info(info);
+            requestEntity.setMagicScriptContext(context);
+            requestEntity.request(request);
+            requestEntity.response(response);
+            return resultProvider.buildResult(requestEntity, -1, "用户未被授权");
         }
         String apiTokenOfHeaders = headers.nextElement();
         if (StringUtils.isBlank(apiTokenOfHeaders)) {
-            return new JsonBean<>(401, "用户未被授权");
+            RequestEntity requestEntity = RequestEntity.create();
+            requestEntity.info(info);
+            requestEntity.setMagicScriptContext(context);
+            requestEntity.request(request);
+            requestEntity.response(response);
+            return resultProvider.buildResult(requestEntity, -1, "用户未被授权");
         }
         if (!apiToken.equals(apiTokenOfHeaders)) {
-            return new JsonBean<>(401, "用户未被授权");
+            RequestEntity requestEntity = RequestEntity.create();
+            requestEntity.info(info);
+            requestEntity.setMagicScriptContext(context);
+            requestEntity.request(request);
+            requestEntity.response(response);
+            return resultProvider.buildResult(requestEntity, -1, "用户未被授权");
         }
         return null;
     }

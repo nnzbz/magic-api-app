@@ -46,9 +46,10 @@ magic-api:
     table-name: magic_backup_record_v2 # 使用数据库存储备份时的表名
   response: |- # 配置JSON格式，格式为magic-script中的表达式
     {
-      msg: message,
       result: code,
+      msg: message,
       extra: data,
+      timestamp,
     }
 
   response-code:
